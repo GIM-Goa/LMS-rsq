@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lead‑Management Rescue: What’s Gone Wong?</title>
-  <!-- Rev 1.3 – options are now randomised each round via Fisher‑Yates shuffle -->
+  <title>Lead-Management Rescue: What’s Gone Wong?</title>
+  <!-- Rev 1.4 – footer credit added -->
   <style>
     body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#f5f7fa;margin:0;display:flex;flex-direction:column;align-items:center;min-height:100vh}
     header{background:#223f87;color:#fff;width:100%;text-align:center;padding:1rem 0;box-shadow:0 2px 4px rgba(0,0,0,.15)}
@@ -20,17 +20,18 @@
     #startBtn,#nextBtn,#restartBtn{background:#223f87;color:#fff;border:none;border-radius:.75rem;padding:.75rem 1.5rem;margin-top:1rem;cursor:pointer;transition:background .2s}
     #startBtn:hover,#nextBtn:hover,#restartBtn:hover{background:#1a2f65}
     #sceneImg{width:100%;height:200px;object-fit:cover;border-radius:.75rem;margin-bottom:1rem}
+    footer{font-size:.75rem;color:#666;text-align:center;width:100%;max-width:520px;margin-bottom:1rem}
   </style>
 </head>
 <body>
   <header>
-    <h1>Lead‑Management Rescue</h1>
-    <p style="margin:0;font-size:.9rem;font-weight:400">A 5‑round challenge inspired by the LMS case</p>
+    <h1>Lead-Management Rescue</h1>
+    <p style="margin:0;font-size:.9rem;font-weight:400">A 5-round challenge inspired by the LMS case</p>
   </header>
   <main id="game">
     <!-- Intro -->
     <section id="intro">
-      <p>You’re the newly‑hired <strong>Revenue Ops Manager</strong>. Every correct decision boosts conversion; every misstep costs deals. Can you fix what went wrong?</p>
+      <p>You’re the newly-hired <strong>Revenue Ops Manager</strong>. Every correct decision boosts conversion; every misstep costs deals. Can you fix what went wrong?</p>
       <button id="startBtn">Start Game</button>
     </section>
 
@@ -52,43 +53,46 @@
       <p style="font-size:.8rem;color:#666;margin-top:1rem">Key lessons distilled from “Lead Management System: What’s Gone Wong?”</p>
     </section>
   </main>
+  <footer>
+    Edited by Dr. Pravat, GIM. It is free for students. Teachers may reach out for a TN.
+  </footer>
 
 <script>
-// Royalty‑free Unsplash images
+// Scenario bank with images and randomised options
 const questions=[
   {img:'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=60',
-   text:'An inbound web‑form lead lands at 10 a.m. What’s your best first action?',
+   text:'An inbound web-form lead lands at 10 a.m. What’s your best first action?',
    options:[
-     {txt:'Call or email within 5 minutes.',correct:true,expl:'Speed‑to‑lead <10 min can lift conversion 4×.'},
+     {txt:'Call or email within 5 minutes.',correct:true,expl:'Speed-to-lead <10 min can lift conversion 4×.'},
      {txt:'Schedule a call for tomorrow.',correct:false,expl:'Delays let competitors pounce first.'},
      {txt:'Add to newsletter and move on.',correct:false,expl:'Generic nurture without human contact squanders intent.'}
    ]},
   {img:'https://images.unsplash.com/photo-1581092785078-f7d98fd0e492?auto=format&fit=crop&w=900&q=60',
-   text:'The prospect is a mid‑size healthcare firm. How will you assign the lead?',
+   text:'The prospect is a mid-size healthcare firm. How will you assign the lead?',
    options:[
-     {txt:'Round‑robin to any rep.',correct:false,expl:'Mis‑matching expertise risks poor discovery.'},
-     {txt:'Route to the rep with healthcare wins.',correct:true,expl:'Sector specialists boost win‑rate.'},
-     {txt:'Send to a junior intern for practice.',correct:false,expl:'High‑value leads need seasoned reps.'}
+     {txt:'Round-robin to any rep.',correct:false,expl:'Mis-matching expertise risks poor discovery.'},
+     {txt:'Route to the rep with healthcare wins.',correct:true,expl:'Sector specialists boost win-rate.'},
+     {txt:'Send to a junior intern for practice.',correct:false,expl:'High-value leads need seasoned reps.'}
    ]},
   {img:'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=60',
    text:'Your rep forgot to capture budget & timeframe. What does the LMS recommend?',
    options:[
      {txt:'Close as disqualified.',correct:false,expl:'Don’t discard until truly unqualified.'},
-     {txt:'Flag “Incomplete data” & alert follow‑up.',correct:true,expl:'Data completeness fuels scoring accuracy.'},
+     {txt:'Flag “Incomplete data” & alert follow-up.',correct:true,expl:'Data completeness fuels scoring accuracy.'},
      {txt:'Guess the values based on experience.',correct:false,expl:'Assumptions pollute the pipeline.'}
    ]},
   {img:'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900&q=60',
-   text:'Follow‑up cadence: Effective rhythm over 10 business days?',
+   text:'Follow-up cadence: Effective rhythm over 10 business days?',
    options:[
-     {txt:'Daily calls & emails.',correct:false,expl:'Over‑contact can annoy and churn leads.'},
-     {txt:'Touches on day 1, 3, 7, 10 across channels.',correct:true,expl:'Balanced persistence respects buyer time.'},
+     {txt:'Daily calls & emails.',correct:false,expl:'Over-contact can annoy and churn leads.'},
+     {txt:'Touches on day 1, 3, 7, 10 across channels.',correct:true,expl:'Balanced persistence respects buyer time.'},
      {txt:'One LinkedIn DM only.',correct:false,expl:'Single touch rarely reactivates interest.'}
    ]},
   {img:'https://images.unsplash.com/photo-1593642634367-d91a135587b5?auto=format&fit=crop&w=900&q=60',
-   text:'Quarter‑end KPI to prove your new process works?',
+   text:'Quarter-end KPI to prove your new process works?',
    options:[
      {txt:'Average lead response time.',correct:false,expl:'Helpful but upstream only.'},
-     {txt:'Opportunity‑to‑close conversion rate.',correct:true,expl:'Shows LMS practice → revenue impact.'},
+     {txt:'Opportunity-to-close conversion rate.',correct:true,expl:'Shows LMS practice → revenue impact.'},
      {txt:'Number of decks created.',correct:false,expl:'Activity ≠ impact.'}
    ]}
 ];
@@ -102,8 +106,8 @@ function start(){intro.classList.add('hidden');result.classList.add('hidden');qu
 function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}}
 function render(){const q=questions[idx];sceneImg.src=q.img;sceneImg.onerror=()=>sceneImg.src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=60';
   qText.textContent=q.text;optionsDiv.innerHTML='';feedback.textContent='';nextBtn.classList.add('hidden');
-  shuffle(q.options); // randomise order
-  q.options.forEach(choice=>{const btn=document.createElement('button');btn.className='option';btn.textContent=choice.txt;btn.onclick=()=>select(choice);optionsDiv.appendChild(btn);});}
+  shuffle(q.options);
+  q.options.forEach(choice=>{const b=document.createElement('button');b.className='option';b.textContent=choice.txt;b.onclick=()=>select(choice);optionsDiv.appendChild(b);});}
 function select(choice){Array.from(document.getElementsByClassName('option')).forEach(b=>b.disabled=true);
   feedback.textContent=choice.expl;feedback.style.color=choice.correct?'green':'crimson';if(choice.correct)score++;nextBtn.classList.remove('hidden');}
 function next(){idx++;idx<questions.length?render():finish();}
@@ -115,3 +119,4 @@ document.getElementById('restartBtn').addEventListener('click',start);
 </script>
 </body>
 </html>
+
